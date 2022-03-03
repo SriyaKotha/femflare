@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+
+    <title>Gallery | Femflare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap"
+            rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js"></script>
+    <style>
+
+     @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+
+}
+.nav-container {
+
+    height: 10vh;
+    width: 100%;
+    z-index: 500;
+
+}
+nav {
+  width: 90%;
+  margin: 10px auto auto auto;
+  min-height: 62px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+}
+
+nav span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 10vh;
+text-decoration: none;
+}
+
+nav span img {
+  height: 5vh;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+nav span h1 {
+    font-size: 1.8;
+    font-family: 'Cinzel', serif;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+    text-decoration: none;
+}
+
+nav ul li {
+  padding: 0px 20px;
+  list-style: none;
+  text-decoration: none;
+}
+
+nav ul li i {
+  font-size: 1.6rem;
+}
+
+nav ul a {
+
+    color: #fff;
+    margin-left: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+    -webkit-transition: 0s linear;
+    transition: 0s linear;
+    text-decoration: none;
+}
+
+nav ul a:not(.trans-button):hover {
+  color: #a3a2a2;
+  text-decoration: none;
+}
+
+nav ul button {
+
+    color: #ffff;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 2px solid #ffff;
+    width: 120px;
+    height: 32px;
+    border-radius: 11px;
+    cursor: pointer;
+    background-color: transparent;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+
+}
+
+nav ul button:hover {
+  scale: 1.07;
+  text-decoration: none;
+}
+
+
+.contenedor {
+    width: 90%;
+    max-width: 1200px;
+    overflow: hidden;
+    margin: auto;
+    padding: 60px 0;
+}
+
+.subtitulo {
+    text-align: center;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 40px;
+    font-size: 40px;
+}
+
+.gallery {
+    background: #f2f2f2;
+}
+
+.contenedor-galeria{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.img-galeria {
+    object-fit: cover;
+    width: 30%;
+    display: block;
+    margin-bottom: 15px;
+    box-shadow: 0 0 6px rgb(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.img-galeria:hover{
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.1);
+}
+
+.imagen-light{
+    position: fixed;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(100%);
+    transition: transform .2s ease-in-out;
+    z-index:99;
+}
+
+.show{
+    transform: translate(0);
+}
+
+.agregar-imagen {
+    object-fit: cover;
+    width: 60%;
+    border-radius: 10px;
+    transform: scale(0);
+    transition: transform .3s .2s;
+}
+
+.showImage{
+    transform: scale(1);
+    z-index: 1;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    cursor: pointer;
+    color:#fff;
+    font-size: 25px;
+}
+
+
+@font-face {
+font-family: "HelveticaNow";
+  src: url(https://assets.codepen.io/5286152/HelveticaNowText-Regular.ttf);
+}
+
+.introcontainer {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+
+}
+.swiper-container {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(to bottom, #370D32,#6C1960);
+}
+.swiper-slide {
+  width: 500px;
+  height: 100%;
+  display: flex;
+  margin: auto;
+  align-items: baseline;
+  justify-content: center;
+  background: transparent;
+  margin-top: 75px;
+}
+.cards {
+  width: 100%;
+  height: auto;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+.card img {
+  object-fit: cover;
+  width: 600px;
+  border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+  min-height: 50vh;
+  padding: 0;
+  margin: 0;
+}
+
+.card.two img {
+  filter: sepia(100%) hue-rotate(190deg) saturate(300%);
+}
+.card.three img {
+  height: 50vh;
+}
+.card.four img {
+  filter: invert(4%) sepia(75%) saturate(500%) hue-rotate(356deg) brightness(70%) contrast(103%);
+}
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0px;
+  max-width: 100%;
+  width: 500px;
+
+}
+
+.title-box {
+  display: flex;
+  text-align: left;
+  max-width: 100%;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 0 !important;
+  bottom: 50px;
+  justify-content: center;
+  color: #fff;
+  opacity: 0;
+  z-index: 15;
+}
+.title-box h1 {
+  display: block;
+  font-family: "Futura";
+  font-weight: 700;
+  line-height: normal;
+  max-width: 100%;
+  font-size: 3vmin;
+}
+.title-box p {
+  font-family: "HelveticaNow";
+  font-size: 2vmin;
+  padding-top: 0;
+  margin: 0;
+  padding-left: 1%;
+  max-width: 100%;
+}
+.card .title-box .seperator {
+  height: 1px;
+  width:10%;
+  background: white;
+  position: absolute;
+  content: "";
+  left: -15%;
+  top: 50%;
+}
+.swiper-slide .title-box{
+  transform: translateX(-50%);
+  transition: all .7s ease .3s;
+}
+.swiper-slide-active .title-box {
+  transform: translateX(0%);
+  opacity: 1;
+  transition: all .7s ease;
+}
+
+.swiper-scrollbar {
+  background: white;
+}
+
+.swiper-slide .card img {
+  transition: filter .7s ease;
+  filter: grayscale(100%);
+}
+.swiper-slide-active .card img {
+  filter: grayscale(0%) brightness(60%);
+}
+
+.swiper-pagination-bullet-active {
+  background: white !important;
+  width: 25px !important;
+  height: 5px !important;
+  border-radius: 0 !important;
+}
+.swiper-pagination-bullet {
+  background: whitesmoke !important;
+  width: 25px !important;
+  height: 5px !important;
+  border-radius: 0!important;
+}
+.swiper-arrows {
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 50%;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  width: 80px !important;
+  height: 80px;
+  background-image: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.swiper-button-prev {
+  left: 0px !important;
+  right: auto !important;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.swiper-button-next {
+  right: 0px !important;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.swiper-button-prev span,
+.swiper-button-next span {
+  width: 10px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  position: absolute;
+  border: solid 2px #666;
+  border-left: 0;
+  border-bottom: 0;
+  transition: all 0.1s ease;
+}
+.swiper-button-prev span {
+  transform: rotate(-135deg);
+  left: 49%;
+}
+.swiper-button-next span {
+  transform: rotate(45deg);
+  right: 49%;
+}
+.swiper-button-prev:hover span,
+.swiper-button-next:hover span {
+  width: 5px;
+  height: 5px;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  width: 0px;
+  height: inherit;
+  content: "";
+  position: absolute;
+  border-radius: 5px;
+  background-color: white;
+  transition: all 0.4s ease-in-out;
+  z-index: -1;
+  opacity: 0.8;
+}
+.swiper-button-prev:after {
+  right: 0;
+}
+.swiper-button-next:after {
+  left: 0;
+}
+.swiper-button-prev:hover:after,
+.swiper-button-next:hover:after {
+  width: inherit;
+}
+.swiper-button-disabled {
+  opacity: 1 !important;
+}
+.swiper-button-disabled.swiper-button-prev span,
+.swiper-button-disabled.swiper-button-next span {
+  opacity: 0.2;
+}
+@media screen and (max-width: 512px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 60px;
+    height: 60px;
+    bottom: 0;
+  }
+  .swiper-arrows {
+    height: 60px;
+  }
+  .swiper-button-prev {
+    right: 60px;
+  }
+  .swiper-button-prev span {
+    left: 45%;
+  }
+  .swiper-button-next span {
+    right: 45%;
+  }
+}
+.swiper-button-next::after, .swiper-container-rtl .swiper-button-prev::after {
+  content: "attr" !important;
+}
+.swiper-button-prev::after, .swiper-container-rtl .swiper-button-prev::after {
+ content: "attr" !important;
+}
+
+    </style>
+</head>
+
+<body>
+
+
+<div class="introcontainer">
+
+
+    <!-- Slider main container -->
+    <div class="swiper-container">
+        <div class="nav-container">
+        <nav>
+                    <span>
+                        <a href="/home" style="text-decoration: none"><h1>FemFlare</h1></a>
+                    </span>
+            <ul>
+                <li><a href="/home" class="active">Home</a></li>
+                <li>
+                    <a href="/aboutus">About Us</a>
+                </li>
+                <li><a href="/events">Events</a></li>
+                <li><a href="/gallery">Gallery</a></li>
+                <li>
+                    <a class="trans-button" href="/register">
+                        <button type="button">Register Now</button>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="cards">
+                    <div class="card ong">
+                        <img src="https://assets.codepen.io/5286152/pexels-wendy-wei-1886641_1.jpg"/>
+                        <div class="text">
+                        </div>
+                        <div class="title-box">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="cards">
+                    <div class="card two">
+                        <img src="https://assets.codepen.io/5286152/BW-DJ.jpeg" alt=""/>
+                        <div class="text">
+                        </div>
+                        <div class="title-box">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="cards">
+                    <div class="card three">
+                        <img src="https://assets.codepen.io/5286152/stephany-lorena-TZ1A9R_WzGs-unsplash.jpg" alt=""/>
+                        <div class="text">
+                        </div>
+
+                        <div class="title-box">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="cards">
+                    <div class="card four">
+                        <img src="https://assets.codepen.io/5286152/clark-van-der-beken-1KBCgRD8BDc-unsplash.jpg"
+                             alt=""/>
+                        <div class="text">
+                        </div>
+
+                        <div class="title-box">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-arrows">
+            <div class="swiper-button-prev"><span></span></div>
+            <div class="swiper-button-next"><span></span></div>
+        </div>
+
+        <!-- If we need scrollbar -->
+    </div>
+</div>
+<script>
+       const swiper = new Swiper('.swiper-container', {
+        speed: 500,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        centeredSlides: true,
+        paginationClickable: true,
+        watchSlidesProgress: true,
+         loop: true,
+        slidesPerView: 2,
+        spaceBetween: 30,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+
+</script>
+
+
+<section class="gallery" id="portafolio" style="background: linear-gradient(to bottom, #6C1960 , #ff33cc);">
+    <div class="contenedor">
+        <h2 class="subtitulo">Gallery</h2>
+        <div class="contenedor-galeria">
+            <img src="https://images.pexels.com/photos/1183021/pexels-photo-1183021.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                 alt="" class="img-galeria">
+            <img src="https://images.pexels.com/photos/572897/pexels-photo-572897.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                 alt="" class="img-galeria">
+            <img src="https://images.pexels.com/photos/2832061/pexels-photo-2832061.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                 alt="" class="img-galeria">
+            <img src="https://images.pexels.com/photos/2356059/pexels-photo-2356059.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                 alt="" class="img-galeria">
+            <img src="https://images.pexels.com/photos/4275885/pexels-photo-4275885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                 alt="" class="img-galeria">
+            <img src="https://images.pexels.com/photos/1424246/pexels-photo-1424246.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                 alt="" class="img-galeria">
+            <img src="https://images.pexels.com/photos/1428787/pexels-photo-1428787.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                 alt="" class="img-galeria">
+            <img src="https://images.pexels.com/photos/2693529/pexels-photo-2693529.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                 alt="" class="img-galeria">
+            <img src="https://images.pexels.com/photos/3022417/pexels-photo-3022417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                 alt="" class="img-galeria">
+        </div>
+    </div>
+</section>
+
+<section class="imagen-light">
+    <i class="fas fa-times close"></i>
+    <img src="./img/img-3.jpg" alt="" class="agregar-imagen">
+</section>
+
+
+<script>
+
+const imagenes = document.querySelectorAll('.img-galeria');
+const imagenesLight = document.querySelector('.agregar-imagen');
+const contenedorLight = document.querySelector('.imagen-light');
+
+imagenes.forEach(imagen =>{
+    imagen.addEventListener('click', ()=>{
+        aparecerImagen(imagen.getAttribute('src'))
+
+    })
+})
+
+contenedorLight.addEventListener('click', (e) =>{
+    if(e.target !== imagenesLight){
+        contenedorLight.classList.remove('show');
+        imagenesLight.classList.remove('showImage');
+    }
+})
+
+const aparecerImagen = (imagen) =>{
+    imagenesLight.src = imagen;
+    contenedorLight.classList.add('show');
+    imagenesLight.classList.add('showImage');
+}
+
+
+</script>
+
+</body>
+</html>

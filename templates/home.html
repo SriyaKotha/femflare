@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home | Femflare</title>
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap"
+            rel="stylesheet"
+    />
+        <style>
+                 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.nav-container {
+
+    height: 10vh;
+    width: 100%;
+    z-index: 500;
+    position: absolute;
+}
+nav {
+  width: 90%;
+  margin: 10px auto auto auto;
+  min-height: 62px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-decoration: none;
+}
+
+nav span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 10vh;
+text-decoration: none;
+}
+
+nav span img {
+  height: 5vh;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+nav span h1 {
+    font-size: 30px;
+    font-family: head;
+    color: #370D32;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing:2px;
+}
+
+nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+    text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+nav ul li {
+  padding: 0px 20px;
+  list-style: none;
+  text-decoration: none;
+}
+
+nav ul li i {
+  font-size: 1.6rem;
+}
+
+nav ul a {
+
+    color: #414141;
+    margin-left: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    -webkit-transition: 0s linear;
+    transition: 0s linear;
+    text-decoration: none;
+}
+
+nav ul a:not(.trans-button):hover {
+  color: #a3a2a2;
+  text-decoration: none;
+}
+
+nav ul button {
+  font-family: 'Poppins', sans-serif;
+    color: #414141;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 3px solid black;
+    width: 120px;
+    height: 32px;
+    border-radius: 11px;
+    cursor: pointer;
+    background-color: transparent;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+
+}
+
+nav ul button:hover {
+  scale: 1.07;
+  text-decoration: none;
+}
+
+        </style>
+    </head>
+    <body>
+     <div class="nav-container">
+        <nav>
+                    <span>
+                        <a href="/home" style="text-decoration: none"><h1>FemFlare</h1></a>
+                    </span>
+            <ul>
+                <li><a href="/home" class="active">Home</a></li>
+                <li>
+                    <a href="/aboutus">About Us</a>
+                </li>
+                <li><a href="/events">Events</a></li>
+                <li><a href="/gallery">Gallery</a></li>
+                <li>
+                    <a class="trans-button" href="/register">
+                        <button type="button">Register Now</button>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+        <div class="hero-cont">
+
+            <div class="hero-left">
+                <div class="hero-text">
+                    <h1>FEMFLARE</h1>
+
+                    <h2>2022</h2>
+                    <p>India's largest inter collegiate girls festival<br>
+                        # Break The Bias
+                    </p>
+                </div>
+            </div>
+            <div class="hero-right">
+                <img src="{% static 'images/main.jpg' %}" >
+            </div>
+        </div>
+        <div class="fly-cont">
+            <h1>Fly Like An Angel</h1>
+                <img src="{% static 'images/fly-removebg-preview.png' %}" >
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+                accusantium velit delectus magni, debitis neque necessitatibus
+                harum libero quia corporis!
+            </p>
+        </div>
+
+        <div class="rock-cont">
+            <div class="rock-text">
+                <h2>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Cum debitis quia incidunt sit adipisci quasi. Lorem ipsum
+                    dolor sit amet consectetur adipisicing elit. Repudiandae,
+                    laboriosam?
+                </h2>
+            </div>
+                <img src="{% static 'images/rock.jpg' %}" >
+        </div>
+
+        <div class="potray-cont">
+                <img src="{% static 'images/89.jpg' %}" >
+            <div class="potray-text">
+                <h2>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Cum debitis quia incidunt sit adipisci quasi. Lorem ipsum
+                    dolor sit amet consectetur adipisicing elit. Repudiandae,
+                    laboriosam?
+                </h2>
+            </div>
+        </div>
+
+        <div class="tog-cont">
+            <h1>Together We Are Women</h1>
+                <img src="{% static 'images/together-removebg-preview.png' %}" >
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+                accusantium velit delectus magni, debitis neque necessitatibus
+                harum libero quia corporis!
+            </p>
+        </div>
+    </body>
+</html>
